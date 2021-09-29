@@ -3,7 +3,7 @@ About r-jpeg
 
 Home: http://www.rforge.net/jpeg/
 
-Package license: GPL-2 | GPL-3
+Package license: GPL-2.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-jpeg-feedstock/blob/master/LICENSE.txt)
 
