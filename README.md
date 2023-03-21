@@ -1,11 +1,22 @@
+About r-jpeg-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-jpeg-feedstock/blob/main/LICENSE.txt)
+
 About r-jpeg
-============
+------------
 
 Home: http://www.rforge.net/jpeg/
 
 Package license: GPL-2.0-or-later
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-jpeg-feedstock/blob/main/LICENSE.txt)
+Summary: This package provides an easy and simple way to read, write and display bitmap images stored in the JPEG format. It can read and write both files and in-memory raw vectors.
+About r-jpeg
+------------
+
+Home: http://www.rforge.net/jpeg/
+
+Package license: GPL-2.0-or-later
 
 Summary: This package provides an easy and simple way to read, write and display bitmap images stored in the JPEG format. It can read and write both files and in-memory raw vectors.
 
