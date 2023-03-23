@@ -1,0 +1,9 @@
+r_base:
+  - 4.1
+  - 4.2
+libjpeg:
+  - jpeg
+  - libjpeg-turbo
+zip_keys:
+  - r_base
+  - libjpeg
