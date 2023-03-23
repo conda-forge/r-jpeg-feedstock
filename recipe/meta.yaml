@@ -21,8 +21,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
@@ -32,15 +32,12 @@ requirements:
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
-    - 
-      - r-base <=4.2.3
-      - jpeg
-    -
-      - r-base >=4.2.3|4.1.3
-      - libjpeg-turbo
+    - r-base {{ r_base }}
+    - {{ libjpeg }}
   run:
-    - r-base
+    - r-base {{ r_base }}
     - {{ native }}gcc-libs         # [win]
+    - {{ libjpeg }}
 
 test:
   commands:
