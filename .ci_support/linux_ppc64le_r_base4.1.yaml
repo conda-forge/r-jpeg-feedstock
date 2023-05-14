@@ -1,27 +1,24 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '14'
+- '12'
+cdt_name:
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
-libjpeg:
-- libjpeg-turbo
-macos_machine:
-- x86_64-apple-darwin13.4.0
+docker_image:
+- quay.io/condaforge/linux-anvil-ppc64le
+libjpeg_turbo:
+- '2'
 pin_run_as_build:
   r-base:
     min_pin: x.x
     max_pin: x.x
 r_base:
-- '4.2'
+- '4.1'
 target_platform:
-- osx-64
-zip_keys:
-- - r_base
-  - libjpeg
+- linux-ppc64le
