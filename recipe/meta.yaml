@@ -14,7 +14,7 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -33,11 +33,10 @@ requirements:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base {{ r_base }}
-    - {{ libjpeg }}
+    - libjpeg-turbo
   run:
     - r-base {{ r_base }}
     - {{ native }}gcc-libs         # [win]
-    - {{ libjpeg }}
 
 test:
   commands:
@@ -56,18 +55,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-
-# Package: jpeg
-# Version: 0.1-8.1
-# Title: Read and write JPEG images
-# Author: Simon Urbanek <Simon.Urbanek@r-project.org>
-# Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
-# Depends: R (>= 2.9.0)
-# Description: This package provides an easy and simple way to read, write and display bitmap images stored in the JPEG format. It can read and write both files and in-memory raw vectors.
-# License: GPL-2 | GPL-3
-# SystemRequirements: libjpeg
-# URL: http://www.rforge.net/jpeg/
-# Packaged: 2019-10-24 14:50:27 UTC; hornik
-# NeedsCompilation: yes
-# Repository: CRAN
-# Date/Publication: 2019-10-24 14:51:52 UTC
