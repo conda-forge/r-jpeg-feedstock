@@ -11,7 +11,7 @@ channel_targets:
 cran_mirror:
 - https://cran.r-project.org
 libjpeg_turbo:
-- '2'
+- '3'
 macos_machine:
 - arm64-apple-darwin20.0.0
 pin_run_as_build:
