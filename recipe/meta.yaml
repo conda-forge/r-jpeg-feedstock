@@ -14,7 +14,7 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 4
+  number: 5
   rpaths:
     - lib/R/lib/
     - lib/
@@ -40,9 +40,13 @@ requirements:
     - {{ native }}gcc-libs         # [win]
 
 test:
+  source_files:
+    - tests/jpeg.R
   commands:
     - $R -e "library('jpeg')"           # [not win]
+    - $R -f tests/jpeg.R                # [not win]
     - "\"%R%\" -e \"library('jpeg')\""  # [win]
+    - "\"%R%\" -f tests/jpeg.R"         # [win]
 
 about:
   home: http://www.rforge.net/jpeg/
