@@ -10,6 +10,8 @@ source:
     - {{ cran_mirror }}/src/contrib/jpeg_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/jpeg/jpeg_{{ version }}.tar.gz
   sha256: c8d9f609c3088f91ec4853d6cc0e66511038a465811dea79ca6a0c09519178ca
+  patches:
+    - 0001-Windows-Use-pkg-config-for-libjpeg-discovery.patch
 
 build:
   number: 6
@@ -26,6 +28,7 @@ requirements:
     - {{ stdlib("m2w64_c") }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
+    - {{ posix }}pkg-config        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}gzip              # [win]

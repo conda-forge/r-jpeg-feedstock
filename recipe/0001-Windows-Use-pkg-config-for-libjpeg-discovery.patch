@@ -1,0 +1,32 @@
+From df67834af53a391a8ad1828e5a368c8592ad9102 Mon Sep 17 00:00:00 2001
+From: Marcel Bargull <marcel.bargull@udo.edu>
+Date: Sun, 7 Jul 2024 12:11:12 +0200
+Subject: [PATCH] Windows: Use pkg-config for libjpeg discovery
+
+Signed-off-by: Marcel Bargull <marcel.bargull@udo.edu>
+---
+ configure.win | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/configure.win b/configure.win
+index ac46183..d42243e 100644
+--- a/configure.win
++++ b/configure.win
+@@ -16,7 +16,16 @@ fi
+ makefiles="-f ${R_HOME}/etc${R_ARCH}/Makeconf -f ${R_SHARE_DIR}/make/config.mk"
+ local=`${MAKE} -s ${makefiles} print R_HOME=${R_HOME} VAR=LOCAL_SOFT`
+ 
+-if [ -e $local/lib ]; then
++if [ -n "${CONDA_BUILD+x}" ]; then
++    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH-${LIBRARY_LIB}\\pkgconfig}"
++fi
++if pkg-config --libs --cflags libjpeg; then
++    use_local=yes
++    printf '%s=%s\n' \
++        PKG_LIBS "$(pkg-config --libs libjpeg)" \
++        PKG_CFLAGS "$(pkg-config --cflags libjpeg)" \
++        >> src/Makevars-ls.win
++elif [ -e $local/lib ]; then
+     if ls $local/lib/libjpeg.* 2>/dev/null; then
+ 	echo "  found libjpeg in LOCAL_SOFT: $local/lib"
+ 	use_local=yes
