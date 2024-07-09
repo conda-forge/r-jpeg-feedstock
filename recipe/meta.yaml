@@ -1,6 +1,5 @@
 {% set version = "0.1-10" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-jpeg
@@ -11,10 +10,11 @@ source:
     - {{ cran_mirror }}/src/contrib/jpeg_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/jpeg/jpeg_{{ version }}.tar.gz
   sha256: c8d9f609c3088f91ec4853d6cc0e66511038a465811dea79ca6a0c09519178ca
+  patches:
+    - 0001-Windows-Use-pkg-config-for-libjpeg-discovery.patch
 
 build:
-  merge_build_host: true  # [win]
-  number: 5
+  number: 6
   rpaths:
     - lib/R/lib/
     - lib/
@@ -23,9 +23,12 @@ requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
+    - {{ posix }}pkg-config        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}gzip              # [win]
@@ -37,7 +40,6 @@ requirements:
     - libjpeg-turbo
   run:
     - r-base {{ r_base }}
-    - {{ native }}gcc-libs         # [win]
 
 test:
   source_files:
