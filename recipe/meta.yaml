@@ -1,4 +1,4 @@
-{% set version = "0.1-10" %}
+{% set version = "0.1-11" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,12 +9,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/jpeg_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/jpeg/jpeg_{{ version }}.tar.gz
-  sha256: c8d9f609c3088f91ec4853d6cc0e66511038a465811dea79ca6a0c09519178ca
+  sha256: 2139efbd48fbcc590a401e40215573f4a214432536bc8967caa163a833b03729
   patches:
     - 0001-Windows-Use-pkg-config-for-libjpeg-discovery.patch
 
 build:
-  number: 6
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
