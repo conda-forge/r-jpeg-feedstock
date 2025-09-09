@@ -14,7 +14,7 @@ source:
     - 0001-Windows-Use-pkg-config-for-libjpeg-discovery.patch
 
 build:
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
